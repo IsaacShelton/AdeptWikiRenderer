@@ -32,3 +32,6 @@ doc-test
 *.DS_Store
 .AppleDouble
 .LSOverride
+
+# Others
+package-lock.json

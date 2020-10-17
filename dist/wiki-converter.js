@@ -80,7 +80,16 @@ var WikiConverter = (function () {
       var _this = this;
 
       this.pages = [];
-      this.toc.getItems().forEach(function (item) {
+
+      // Hoist 'Home.md' to top
+      var items = this.toc.getItems();
+      items.sort(function (a, b) {
+        if (a.title == "Home.md") return -1;
+        if (b.title == "Home.md") return 1;
+        return 0;
+      });
+
+      items.forEach(function (item) {
         _this.pages.push({
           title: item.title,
           file: _this.mdAliases[item.pageId],

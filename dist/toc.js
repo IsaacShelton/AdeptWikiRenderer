@@ -49,7 +49,7 @@ var Toc = (function () {
       this.toc.tocMd = this.getTocFileContents();
 
       var convertedToc = this.converter.getMarkdownConverter().convertTocMarkdownString(this.toc.tocMd);
-      this.toc.tocHtml = convertedToc.tocHtml;
+      this.toc.tocHtml = ""; // convertedToc.tocHtml
       this.toc.tocItems = convertedToc.tocItems;
     }
 
@@ -61,9 +61,11 @@ var Toc = (function () {
     key: 'getTocFileContents',
     value: function getTocFileContents() {
       var tocFile = this.converter.getTocFile();
-      if (tocFile) {
-        return fs.readFileSync(tocFile, { encoding: 'utf8' });
-      }
+
+      //if (tocFile) {
+      //  return fs.readFileSync(tocFile, {encoding: 'utf8'})
+      //}
+
       // if no toc file, generate contents from files
       return this.genTocFileContents();
     }

@@ -52,6 +52,21 @@ var Markdown = (function () {
         return '<a href="' + href + '">' + text + '</a>';
       };
 
+      /*
+      this.mainRenderer.link = function(href, title, text) {
+        let pageId = helpers.getPageIdFromFilenameOrLink(href)
+        if(self.wikiFileAliases[pageId]){
+          self.tocItems.push({
+            title: text,
+            link: href,
+            pageId: pageId
+          })
+          href = `#${pageId}`
+        }
+        return `<a href="${href}">${text}</a>`
+      }
+      */
+
       this.mainRenderer.image = function (href, title, text) {
         if (!href.match(/^https?:\/\//)) {
           href = path.resolve(self.wikiPath, href);

@@ -74,7 +74,16 @@ class WikiConverter {
    */
   computePages() {
     this.pages = []
-    this.toc.getItems().forEach(item => {
+
+    // Hoist 'Home.md' to top
+    var items = this.toc.getItems();
+    items.sort((a, b) => {
+      if(a.title == "Home.md") return -1;
+      if(b.title == "Home.md") return 1;
+      return 0;
+    })
+
+    items.forEach(item => {
       this.pages.push({
         title: item.title,
         file: this.mdAliases[item.pageId],

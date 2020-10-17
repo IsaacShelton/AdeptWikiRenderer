@@ -36,7 +36,7 @@ class Toc {
     this.toc.tocMd = this.getTocFileContents()
 
     let convertedToc = this.converter.getMarkdownConverter().convertTocMarkdownString(this.toc.tocMd)
-    this.toc.tocHtml = convertedToc.tocHtml
+    this.toc.tocHtml = ""; // convertedToc.tocHtml
     this.toc.tocItems = convertedToc.tocItems
   }
 
@@ -46,9 +46,11 @@ class Toc {
    */
   getTocFileContents() {
     var tocFile = this.converter.getTocFile()
-    if (tocFile) {
-      return fs.readFileSync(tocFile, {encoding: 'utf8'})
-    }
+
+    //if (tocFile) {
+    //  return fs.readFileSync(tocFile, {encoding: 'utf8'})
+    //}
+    
     // if no toc file, generate contents from files
     return this.genTocFileContents()
   }

@@ -14,7 +14,8 @@ class PdfWriter extends BaseWriter {
   }
 
   getPageBreaker(pageTitle, pageId) {
-    return `<h1 id="${pageId}" style="page-break-before: always !important;">${pageTitle}</h1>`
+    //return `<h1 id="${pageId}" style="page-break-before: always !important;">${pageTitle}</h1>`
+    return `<h1 id="${pageId}" style="page-break-before: always !important;"></h1>`
   }
 
   write() {
@@ -84,13 +85,15 @@ class PdfWriter extends BaseWriter {
     <div class='covertitle'>
       <b>${this.converter.getOption('title')}</b>
     </div>
-
+`
+    /*
     <!-- Cover page -->
     <div class='nav-container'>
       <h1 class='toc'>${this.converter.getOption('tocTitle')}</h1>
     ${this.converter.getToc().getHtml()}
     </div>
 `
+    */
     return htmlHeader
   }
 
