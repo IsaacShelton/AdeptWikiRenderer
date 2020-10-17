@@ -20,6 +20,7 @@ class Cli {
 
       .option("-t, --title <title>", "Wiki title [default: Documentation]", 'Documentation ')
       .option("-d, --disable-inline-assets", "Disable inlining of css & js in html document")
+      .option("--auto-highlight", "Automatically highlight code blocks")
 
       .option("--logo-img <logo-file>", "Logo image file")
       .option("--footer <footer>" , "Wiki footer")
@@ -56,7 +57,8 @@ class Cli {
       highlightTheme: this.program.highlightTheme,
       userCssFile: this.program.css,
       verbose: this.program.verbose || false,
-      disableInlineAssets: this.program.disableInlineAssets || false
+      disableInlineAssets: this.program.disableInlineAssets || false,
+      autoHighlight: this.program.autoHighlight || false,
     }
 
     var ld = new WikiConverter(this.program.args[0], options)

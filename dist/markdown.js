@@ -13,7 +13,7 @@ var marked = require('marked'),
     helpers = require('./helpers');
 
 var Markdown = (function () {
-  function Markdown(wikiPath, aliases) {
+  function Markdown(wikiPath, aliases, clOptions) {
     _classCallCheck(this, Markdown);
 
     this.wikiPath = wikiPath;
@@ -21,6 +21,7 @@ var Markdown = (function () {
     this.tocItems = [];
     this.firstTocLiClassProcessed = false;
     this.setupMainRenderer().setupTocRenderer();
+    this.clOptions = clOptions;
   }
 
   _createClass(Markdown, [{
@@ -33,10 +34,15 @@ var Markdown = (function () {
       this.mainRenderer.code = function (code, lang) {
         if (lang && highlight.getLanguage(lang)) {
           code = highlight.highlight(lang, code, true);
+          return '<pre class="hljs">' + code.value + '</pre>';
         } else {
-          code = highlight.highlightAuto(code);
+          if (self.clOptions && self.clOptions.autoHighlight) {
+            code = highlight.highlightAuto(code);
+            return '<pre class="hljs">' + code.value + '</pre>';
+          } else {
+            return '<pre class="hljs">' + code + '</pre>';
+          }
         }
-        return '<pre class="hljs">' + code.value + '</pre>';
       };
 
       this.mainRenderer.link = function (href, title, text) {

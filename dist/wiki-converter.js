@@ -48,7 +48,7 @@ var WikiConverter = (function () {
           this.mdFiles = result.files;
           this.mdAliases = result.aliases;
 
-          this.markdownConverter = new GWCMarkdown(this.wikiPath, this.mdAliases);
+          this.markdownConverter = new GWCMarkdown(this.wikiPath, this.mdAliases, self.options);
           this.toc = new GWCToc(self);
 
           this.copyAssets();
@@ -181,7 +181,8 @@ var WikiConverter = (function () {
         tocFile: GWCFinder.searchForFile(['_Toc.html', '_Sidebar.html', '_Toc.md', '_Sidebar.md'], this.wikiPath),
         tocLevel: 3, // between 1 and 4
         highlightTheme: 'github',
-        userCssFile: null
+        userCssFile: null,
+        autoHighlight: false
       };
 
       this.options = defaults(options, def);

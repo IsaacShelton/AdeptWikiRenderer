@@ -11,13 +11,14 @@ var marked = require('marked')
 
 class Markdown {
 
-  constructor(wikiPath, aliases) {
+  constructor(wikiPath, aliases, clOptions) {
     this.wikiPath = wikiPath
     this.wikiFileAliases = aliases
     this.tocItems = []
     this.firstTocLiClassProcessed = false
     this.setupMainRenderer()
       .setupTocRenderer()
+    this.clOptions = clOptions;
   }
 
   setupMainRenderer() {
@@ -28,10 +29,15 @@ class Markdown {
     this.mainRenderer.code = function(code, lang) {
       if (lang && highlight.getLanguage(lang)) {
         code = highlight.highlight(lang, code, true);
+        return `<pre class="hljs">${code.value}</pre>`
       } else {
-        code = highlight.highlightAuto(code);
+        if(self.clOptions && self.clOptions.autoHighlight){
+          code = highlight.highlightAuto(code);
+          return `<pre class="hljs">${code.value}</pre>`
+        } else {
+          return `<pre class="hljs">${code}</pre>`
+        }
       }
-      return `<pre class="hljs">${code.value}</pre>`
     }
 
     this.mainRenderer.link = function(href, title, text) {
@@ -163,6 +169,5 @@ class Markdown {
     })
   }
 }
-
 
 module.exports = Markdown
