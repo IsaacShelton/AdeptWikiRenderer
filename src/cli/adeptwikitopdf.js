@@ -12,7 +12,7 @@ class Cli {
     this.program = program.version(WikiConverter.package.version)
 
       .usage('[options] <wiki-dir>')
-      .description('Convert a wiki')
+      .description('Convert Adept Wiki Documentation to PDF')
 
       .option("-f, --format <format>", "Format to convert to. Either html, pdf, or all [default: html]", 'html')
       .option("-o, --output <output-dir>", "Output dir [default: './']", './')

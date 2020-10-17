@@ -1,7 +1,7 @@
 {
-  "name": "github-wikito-converter",
+  "name": "adept-wiki-renderer",
   "version": "1.5.2",
-  "description": "Generate HTML & PDF documentation from Github wiki or any other markdown-based wiki.",
+  "description": "Renders Adept Wiki Documentation to PDF",
   "keywords": [
     "wiki",
     "wikito",
@@ -42,16 +42,15 @@
     "build-and-install-g": "npm run build && npm install -g"
   },
   "bin": {
-    "gwtc": "dist/cli/gwtc.js"
+    "adeptwikitopdf": "dist/cli/adeptwikitopdf.js"
   },
   "engines": {
     "node": ">= 0.10",
     "iojs": ">= 1.0"
   },
-  "author": "Yakiv Mospan <yakiv.mospan@gmail.com> (https://github.com/yakivmospan)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yakivmospan/github-wikito-converter"
+    "url": "https://github.com/IsaacShelton/AdeptWikiRenderer"
   },
   "license": "MIT",
   "dependencies": {
