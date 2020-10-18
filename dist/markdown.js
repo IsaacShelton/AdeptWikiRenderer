@@ -215,7 +215,7 @@ var Markdown = (function () {
         // convert [[<link title> | <page name>]] to [<link title>](<page name>)
         link = '[' + linkTitle + '](' + pageName + ')';
         return link;
-      });
+      }).replace("# Adept Programming Language 2.4", ""); // HACK: Remove header from Home.md
     }
   }]);
 

@@ -454,3 +454,11 @@ span.float-right {
 .pdf-doc .nav li span {
     padding: 3px 6px;
 }
+
+code {
+  color: #333333;
+}
+
+a code {
+  color: #4183C4;
+}

@@ -182,6 +182,7 @@ class Markdown {
       link = `[${linkTitle}](${pageName})`
       return link
     })
+    .replace("# Adept Programming Language 2.4", ""); // HACK: Remove header from Home.md
   }
 }
 
